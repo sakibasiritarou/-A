@@ -1,22 +1,17 @@
 import zipfile
+import glob
 
-# sample.zipを解凍
-with zipfile.ZipFile('sample.zip', 'r') as zip_ref:
-    zip_ref.extractall('sample')
 
-file_sum = 0
+total = 0
 
-# ファイルごとに処理
-for i in range(10000):
-    file_name = f'kitamura_{str(i).zfill(5)}_kug.txt'
-    
-    # ファイル名の数字が奇数の場合のみ処理
-    if i % 2 != 0:
-        file_path = f'sample\{file_name}'
-        
-        # ファイルを開いて数字を読み取り、合計に加算
-        with open(file_path, 'r') as file:
-            number = int(file.read())
-            file_sum += number
+myfolder=glob.glob("./sample/*[13579]_kgu.txt")
+for myfile in myfolder:
+    with open(myfile, encoding='utf-8') as file:
+        try:
+            number=int(file.readline())
+        except ValueError :
+            continue
+        total += number
 
-print("奇数ファイルの数字の合計:", file_sum)
+
+print("奇数ファイルの数字の合計:",total )
