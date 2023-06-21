@@ -1,1 +1,0 @@
-canvas.create_line(100, 250, 150, 300)
