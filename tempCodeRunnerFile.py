@@ -1,0 +1,2 @@
+# ウィンドウのメインループ
+window.mainloop()
